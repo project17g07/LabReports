@@ -76,7 +76,7 @@ class SocketClient extends JFrame implements ActionListener {
 		getContentPane().add(panel);
 		panel.add("North", text);
 		panel.add("South", button);
-	} // End Constructor
+	}
 
 	/**
 	 * On button press it sends the contents of the textbox to the server.
@@ -98,7 +98,7 @@ class SocketClient extends JFrame implements ActionListener {
 	public void listenSocket() {
 		try {
 			SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-			sslsocket = (SSLSocket) sslsocketfactory.createSocket("185.194.140.29", 14444);
+			sslsocket = (SSLSocket) sslsocketfactory.createSocket(address, 14444);
 			out = new PrintWriter(sslsocket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(sslsocket.getInputStream()));
 			ClientThread cT = new ClientThread(this, sslsocket);

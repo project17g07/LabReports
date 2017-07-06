@@ -1,13 +1,13 @@
 import java.io.*;
 import javax.net.ssl.SSLSocket;
 
-class ClientWorker implements Runnable {
+class ServerWorker implements Runnable {
 	private SSLSocket client;
 	private SocketThrdServer socketThrdServer;
 	private int id;
 	private boolean connected = false;
 
-	ClientWorker(SocketThrdServer socketThrdServer, SSLSocket client, int id) {
+	ServerWorker(SocketThrdServer socketThrdServer, SSLSocket client, int id) {
 		this.client = client;
 		this.socketThrdServer = socketThrdServer;
 		this.id = id;

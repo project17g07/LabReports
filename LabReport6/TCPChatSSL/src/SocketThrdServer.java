@@ -104,23 +104,23 @@ class SocketThrdServer extends JFrame {
 			System.exit(-1);
 		}
 		catch (IOException e) {
-			System.out.println("Could not listen on port 4444");
+			System.out.println("Could not listen on port 14444");
 			e.printStackTrace();
 			System.exit(-1);
 		}
 		while (true) {
-			ClientWorker w;
+			ServerWorker w;
 			try {
 				SSLSocket soc = (SSLSocket) sslserversocket.accept();
 				clientList.add(new Client(soc, idGen));
-				w = new ClientWorker(this, soc, idGen);
+				w = new ServerWorker(this, soc, idGen);
 				Thread t = new Thread(w);
 				t.start();
 				sendToClient(getClientFromId(idGen), "/awaitingLogin");
 				idGen++;
 			}
 			catch (IOException e) {
-				System.out.println("Accept failed: 4444");
+				System.out.println("Accept failed: 14444");
 				System.exit(-1);
 			}
 		}
